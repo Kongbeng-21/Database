@@ -1,0 +1,30 @@
+[{
+  "_id": {
+    "$oid": "6ade39a108a40dbfc3b4897a"
+  },
+  "username": "Kongbeng",
+  "followers": [
+    "Boom"
+  ],
+  "following": [
+    "Boom"
+  ],
+  "created_at": {
+    "$date": "2026-10-26T00:17:21.380Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6ade39c008a40dbfc3b4897c"
+  },
+  "username": "Boom",
+  "followers": [
+    "Kongbeng"
+  ],
+  "following": [
+    "Kongbeng"
+  ],
+  "created_at": {
+    "$date": "2026-10-26T00:17:52.776Z"
+  }
+}]

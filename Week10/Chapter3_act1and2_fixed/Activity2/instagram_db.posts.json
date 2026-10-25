@@ -1,0 +1,20 @@
+[{
+  "_id": {
+    "$oid": "6ade39ae08a40dbfc3b4897b"
+  },
+  "username": "Kongbeng",
+  "caption": "Learning MongoDB!",
+  "image_url": "https://picsum.photos/400",
+  "created_at": {
+    "$date": "2026-10-26T00:17:34.495Z"
+  },
+  "comments": [
+    {
+      "username": "Boom",
+      "text": "Nice",
+      "created_at": {
+        "$date": "2026-10-26T00:18:02.296Z"
+      }
+    }
+  ]
+}]

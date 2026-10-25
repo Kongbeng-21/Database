@@ -1,0 +1,71 @@
+
+=== Student Management System ===
+1. Add Student
+2. View All Students
+3. Search by ID
+4. Search by GPA
+5. Update Student
+6. Delete Student
+7. Clear All Data
+8. Advanced Search (AND/OR)
+9. Exit
+Enter your choice: 1
+
+--- Add New Student ---
+Enter Student ID (e.g., S001): S001
+Enter Name: A
+Enter Age: 20
+Enter Department: CS
+Enter GPA: 3.0
+Enter Courses (comma separated): M
+Student inserted successfully with _id: 65123abc...
+
+=== Student Management System ===
+1. Add Student
+2. View All Students
+3. Search by ID
+4. Search by GPA
+5. Update Student
+6. Delete Student
+7. Clear All Data
+8. Advanced Search (AND/OR)
+9. Exit
+Enter your choice: 1
+
+--- Add New Student ---
+Enter Student ID (e.g., S001): S002
+Enter Name: B
+Enter Age: 21
+Enter Department: CS
+Enter GPA: 3.8
+Enter Courses (comma separated): M
+Student inserted successfully with _id: 65123abc...
+
+=== Student Management System ===
+1. Add Student
+2. View All Students
+3. Search by ID
+4. Search by GPA
+5. Update Student
+6. Delete Student
+7. Clear All Data
+8. Advanced Search (AND/OR)
+9. Exit
+Enter your choice: 4
+
+--- Search by GPA ---
+Enter minimum GPA: 3.5
+ID: S002, Name: B, GPA: 3.8
+
+=== Student Management System ===
+1. Add Student
+2. View All Students
+3. Search by ID
+4. Search by GPA
+5. Update Student
+6. Delete Student
+7. Clear All Data
+8. Advanced Search (AND/OR)
+9. Exit
+Enter your choice: 9
+Goodbye!

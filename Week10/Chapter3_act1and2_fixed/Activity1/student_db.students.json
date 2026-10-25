@@ -1,0 +1,41 @@
+[{
+  "_id": {
+    "$oid": "6add4ccfc53b637e0e03906a"
+  },
+  "student_id": "S001",
+  "name": "kongbeng",
+  "age": 19,
+  "department": "engineering",
+  "gpa": 3.67,
+  "courses": [
+    "compro2",
+    "DBMS"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6add4d2fc53b637e0e03906c"
+  },
+  "student_id": "S003",
+  "name": "Boom",
+  "age": 21,
+  "department": "engineering",
+  "gpa": 3.1,
+  "courses": [
+    "ML"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6add4e1a3d9372f54bdbd3fa"
+  },
+  "student_id": "S004",
+  "name": "w1n",
+  "age": 20,
+  "department": "CS",
+  "gpa": 3.5,
+  "courses": [
+    "DBMS",
+    "Network"
+  ]
+}]

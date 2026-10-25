@@ -1,0 +1,86 @@
+<mxfile host="app.diagrams.net" agent="5.0">
+  <diagram name="HW6 UML" id="hw6uml">
+    <mxGraphModel dx="1079" dy="736" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pub" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;Publisher&lt;/b&gt;&lt;hr&gt;PK  PublisherID&lt;br&gt;    PublisherName&lt;br&gt;    Country&lt;br&gt;    YearFounded&lt;br&gt;    TargetGroup" vertex="1">
+          <mxGeometry height="120" width="220" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="game" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;Game&lt;/b&gt;&lt;hr&gt;PK  GameID&lt;br&gt;    GameName&lt;br&gt;    RentPrice&lt;br&gt;FK  PublisherID" vertex="1">
+          <mxGeometry height="100" width="200" x="400" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="genre" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;b&gt;Genre&lt;/b&gt;&lt;hr&gt;PK  GenreID&lt;br&gt;    GenreName" vertex="1">
+          <mxGeometry height="80" width="180" x="700" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="rental" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;b&gt;Rental&lt;/b&gt;&lt;hr&gt;PK  RentalID&lt;br&gt;FK  MemberID&lt;br&gt;FK  GameID&lt;br&gt;    DateRent&lt;br&gt;    DateGiveBack" vertex="1">
+          <mxGeometry height="110" width="200" x="120" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="member" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;Member&lt;/b&gt;&lt;hr&gt;PK  MemberID&lt;br&gt;    MemberName&lt;br&gt;    PhoneNum&lt;br&gt;    Membership&lt;br&gt;    JoinDate&lt;br&gt;    ReferredBy" vertex="1">
+          <mxGeometry height="130" width="220" x="400" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="indiv" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#f8cecc;strokeColor=#b85450;" value="&lt;b&gt;IndividualMember&lt;/b&gt;&lt;hr&gt;PK/FK  MemberID&lt;br&gt;       IDCardNumber" vertex="1">
+          <mxGeometry height="70" width="220" x="160" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="corp" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fillColor=#f8cecc;strokeColor=#b85450;" value="&lt;b&gt;CorporateMember&lt;/b&gt;&lt;hr&gt;PK/FK  MemberID&lt;br&gt;       CompanyName&lt;br&gt;       TaxID" vertex="1">
+          <mxGeometry height="85" width="220" x="560" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="pub" style="endArrow=none;html=1;fontSize=11;" target="game" value="Publishes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1a" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;" value="1" vertex="1">
+          <mxGeometry height="20" width="30" x="270" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="e1b" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;" value="0..*" vertex="1">
+          <mxGeometry height="20" width="35" x="360" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="game" style="endArrow=none;html=1;fontSize=11;" target="genre" value="HasGenre">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2a" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;" value="0..*" vertex="1">
+          <mxGeometry height="20" width="35" x="605" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="e2b" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;" value="1..*" vertex="1">
+          <mxGeometry height="20" width="35" x="665" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="member" style="endArrow=none;html=1;fontSize=11;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="game" value="Rents">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3a" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;" value="0..*" vertex="1">
+          <mxGeometry height="20" width="35" x="520" y="392" as="geometry" />
+        </mxCell>
+        <mxCell id="e3b" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;" value="0..*" vertex="1">
+          <mxGeometry height="20" width="35" x="510" y="142" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="rental" style="endArrow=none;dashed=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="505" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="member" style="endArrow=none;html=1;fontSize=11;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" target="member" value="ReferredBy">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="452" />
+              <mxPoint x="700" y="518" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5a" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;" value="0..1" vertex="1">
+          <mxGeometry height="20" width="35" x="705" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="e5b" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;" value="0..*" vertex="1">
+          <mxGeometry height="20" width="35" x="705" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="indiv" style="endArrow=block;endFill=0;endSize=16;html=1;rounded=0;" target="member">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="corp" style="endArrow=block;endFill=0;endSize=16;html=1;rounded=0;" target="member">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label1" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#990000;" value="{complete, disjoint}" vertex="1">
+          <mxGeometry height="20" width="150" x="230" y="560" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
