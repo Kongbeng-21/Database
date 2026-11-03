@@ -1,0 +1,97 @@
+\newpage
+\subsection{Activity/Homework: Multi-Database Web Application with Redis Caching}
+
+\subsubsection{Overview}
+In this activity, you will build a backend for an \textbf{Online Store Platform} that integrates three different database systems to leverage their specific strengths:
+\begin{itemize}
+    \item \textbf{MySQL:} Stores structured user profiles (Relational, ACID compliance for identity and roles).
+    \item \textbf{MongoDB:} Stores flexible product catalogs (Document-based, ideal for varying product details).
+    \item \textbf{Redis:} Provides a high-speed caching layer for frequently accessed profiles and catalogs (In-memory, Key-Value).
+\end{itemize}
+
+\subsubsection{Learning Objectives}
+By completing this activity, you will be able to:
+\begin{itemize}
+    \item Integrate multiple database systems (SQL, NoSQL, and In-memory) into a single Flask application.
+    \item Implement the \textbf{Lazy Loading (Cache-Aside)} strategy for multiple data sources.
+    \item Manage \textbf{Cache Consistency} using explicit invalidation patterns.
+    \item Build a \textbf{Cache Explorer} to visualize and audit memory state.
+\end{itemize}
+
+\newpage
+\subsubsection{System Architecture}
+\begin{center}
+\begin{verbatim}
+          Client (Browser)
+                  |
+    Flask Application (Full Stack)
+            /     |     \
+       MySQL   MongoDB   Redis
+      (Users) (Products) (Cache Explorer)
+\end{verbatim}
+\end{center}
+
+\subsubsection{Database Design}
+
+\textbf{1. MySQL: \texttt{users} Table} \\
+Designed for fixed schema and strong consistency.
+\begin{itemize}
+    \item \texttt{id}: INT (PK, Auto Increment)
+    \item \texttt{username}: VARCHAR(100)
+    \item \texttt{email}: VARCHAR(255)
+    \item \texttt{role}: ENUM('admin', 'user')
+    \item \texttt{created\_at}: TIMESTAMP
+\end{itemize}
+
+\textbf{2. MongoDB: \texttt{products} Collection} \\
+Designed for flexibility; different products can have different attributes.
+\begin{lstlisting}[language=json, basicstyle=\small\ttfamily]
+{
+  "_id": "P1001",
+  "name": "Gaming Mouse",
+  "category": "Electronics",
+  "price": 1299,
+}
+\end{lstlisting}
+
+\textbf{3. Redis: Cache Keys}
+\begin{itemize}
+    \item \texttt{user\_list}: JSON string of all users from MySQL.
+    \item \texttt{user:<id>}: JSON string of a specific user profile.
+    \item \texttt{product\_list}: JSON string of all products from MongoDB.
+    \item \texttt{product:<id>}: JSON string of specific product details.
+\end{itemize}
+
+\subsubsection{Activity Tasks}
+
+\paragraph{Activity 1: Setup MySQL Connection}~\\
+Implement the \texttt{get\_mysql_connection()} function in \texttt{db.py}. Use the \texttt{mysql.connector} library to connect to the local database using the following credentials: host=\texttt{localhost}, user=\texttt{root}, password=\texttt{rootpassword}, and database=\texttt{user\_db}.
+
+\paragraph{Activity 2: Setup MongoDB Connection}~\\
+Implement the \texttt{get\_mongo_collection()} function in \texttt{db.py}. Use the \texttt{pymongo} library to connect to \texttt{mongodb://localhost:27017} and return the \texttt{products} collection from the \texttt{product\_db} database.
+
+\paragraph{Activity 3: Setup Redis Client}~\\
+Implement the \texttt{get\_redis\_client()} function in \texttt{db.py}. Create a Redis client connecting to \texttt{localhost:6379} with \texttt{decode\_responses=True}.
+
+\paragraph{Activity 4: Implement Lazy Loading Pattern (List Retrieval)}~\\
+Modify the \texttt{list\_products} and \texttt{list\_users} endpoints to implement the Lazy Loading pattern:
+\begin{enumerate}
+    \item Check Redis for the existing list (\texttt{product\_list} or \texttt{user\_list}).
+    \item If found (\textbf{Cache Hit}), return the data immediately.
+    \item If not found (\textbf{Cache Miss}), fetch from the primary database and populate Redis for future requests.
+\end{enumerate}
+
+\paragraph{Activity 5: Implement Cache Invalidation (Resource Creation)}~\\
+Ensure that when a new User or Product is created via \texttt{POST} requests, the corresponding list cache in Redis is deleted. This ensures the dashboard stays up-to-date with the latest data.
+
+\paragraph{Activity 6: Individual Entity Caching}~\\
+Implement caching for individual lookups (\texttt{GET /users/<id>} and \texttt{GET /products/<id>}). Use key formats like \texttt{user:1} and \texttt{product:P1001}. This demonstrates more granular caching compared to full list retrieval.
+
+\paragraph{Activity 7: Bulk Cache Invalidation (Management)}~\\
+Implement the \texttt{/cache/remove} endpoint logic. This function should iterate through Redis and delete all relevant keys (lists and individual profiles) to allow for testing the "Cache Miss" scenario manually.
+
+\paragraph{Activity 8: Cache Status and Auditing}~\\
+Implement the \texttt{/cache/status} logic to return the total count of keys in Redis. This data is displayed in the "Keys" badge on the frontend dashboard.
+
+\subsubsection{Deliverables}
+Submit your commented \texttt{db.py} and \texttt{app.py}, a screenshot of your **Cache Explorer** with active data, and a copy of your **terminal logs** showing a sequence of Cache Misses followed by Cache Hits.
